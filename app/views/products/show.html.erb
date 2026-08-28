@@ -1,0 +1,11 @@
+<div>
+  <p>商品名: <%= @product.name %></p>
+  <p>説明: <%= @product.description %></p>
+  <p>価格: <%= @product.price %>円</p>
+</div>
+
+<%= link_to "編集", edit_product_path(@product) %>
+
+<br>
+
+<%= link_to '削除', destroy_product_path(@product),  data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %>
