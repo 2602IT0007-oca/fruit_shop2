@@ -1,6 +1,7 @@
 # app/config/routes.rb
 
 Rails.application.routes.draw do
+  devise_for :users
   # 商品登録
   get 'products/new'
   post 'products', to: 'products#create'  # 登録
@@ -21,8 +22,14 @@ Rails.application.routes.draw do
   # トップページ
   root to: "homes#top"
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # ユーザ認証
+  devise_for :users
 
+  # 商品関連
+  resources :products
+
+  # 省略
+ # Define your application routes per the DSL in https
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
