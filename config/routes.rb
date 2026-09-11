@@ -1,6 +1,7 @@
 # app/config/routes.rb
 
 Rails.application.routes.draw do
+  get "mypage/show"
   devise_for :users
   # 商品登録
   get 'products/new'
@@ -22,11 +23,10 @@ Rails.application.routes.draw do
   # トップページ
   root to: "homes#top"
 
-  # ユーザ認証
-  devise_for :users
-
   # 商品関連
   resources :products
+
+  resources :mypage, only: [:show]
 
   # 省略
  # Define your application routes per the DSL in https
