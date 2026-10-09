@@ -6,6 +6,12 @@
 
 <% @products.each do |product| %>
   <div>
+    <!-- 追加　ここから -->
+    <% if product.photo.attached? %>
+      <%= image_tag product.thumbnail %>
+    <% end %>
+    <!-- 追加　ここまで -->
+
     <p>商品名 : <%= product.name %></p>
     <p>説明 : <%= product.description %></p>
     <p>価格 : <%= product.price %> 円</p>

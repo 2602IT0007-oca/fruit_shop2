@@ -1,8 +1,13 @@
-<!-- app/views/products/new.html.erb -->
-
 <h1>新規商品登録</h1>
 
 <%= form_with model: @product do |f| %>
+
+    <div>
+    <%= f.label :photo, "画像" %>
+    <%= f.file_field :photo %>
+  </div>
+
+  
   <div>
     <%= f.label :name, "商品名" %>
     <%= f.text_field :name %>

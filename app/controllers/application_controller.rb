@@ -1,9 +1,8 @@
-
 class ApplicationController < ActionController::Base
   # Deviseのコントローラ実行時にストロングパラメータを設定
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # ログイン後の遷移先を設定
+   # ログイン後の遷移先を設定
   def after_sign_in_path_for(resource)
     mypage_path(resource)
   end

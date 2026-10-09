@@ -1,4 +1,3 @@
-
 class MypageController < ApplicationController
   # ログインユーザのみアクセス許可
   before_action :authenticate_user!

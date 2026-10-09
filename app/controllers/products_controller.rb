@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
 
     # ストロングパラメータで、フォームから送信されたデータを許可する
     def product_params
-      params.require(:product).permit(:name, :description, :price)
+      params.require(:product).permit(:name, :description, :price, :photo)  # パラメータにphotoを追加
     end
 
     # 管理者確認メソッド
