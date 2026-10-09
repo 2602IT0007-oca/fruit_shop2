@@ -26,7 +26,8 @@
       </ul>
     </nav>
   </header>
-
+  <%= render "layouts/flash" %> <!-- 追加 -->
   <%= yield %>
+   <%= render "layouts/viewed_products" %> <!-- 追加 -->
 </body>
 </html>
