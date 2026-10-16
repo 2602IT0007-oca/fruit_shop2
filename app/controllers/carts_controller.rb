@@ -1,22 +1,7 @@
-# app/controllers/carts_controller.rb
 class CartsController < ApplicationController
-
   def show
-    # sessionのカート作成後に処理を書きます
   end
-
-  def index
-    # セッションからカートの情報を取得
-    if session[:cart].present?
-      # カート内の各アイテム（ハッシュ）から商品IDだけを取り出して配列にする
-      # .map は各要素に処理を施し、その結果を新しい配列として返すメソッド
-      product_ids = session[:cart].map { |item| item["id"] }
-      # 取り出したIDに該当する商品情報をまとめてデータベースから取得し、各IDをキーにしてハッシュ形式で取り出せるようにする（index_by）
-      @products = Product.where(id: product_ids).index_by(&:id)
-    end
-  end
-
-   def add_product
+def add_product
     # 空のカートもしくはカートの中に商品がない場合は初期化
     session[:cart] ||= []
     # 商品のIDで商品を取得
@@ -37,6 +22,17 @@ class CartsController < ApplicationController
     end
     cart_calculation
     redirect_to carts_path, notice: '商品がカートに追加されました。'
+  end
+  def index
+    # セッションからカートの情報を取得
+    if session[:cart].present?
+      # カート内の各アイテム（ハッシュ）から商品IDだけを取り出して配列にする
+      # .map は各要素に処理を施し、その結果を新しい配列として返すメソッド
+      product_ids = session[:cart].map { |item| item["id"] }
+      # 取り出したIDに該当する商品情報をまとめてデータベースから取得し、各IDをキーにしてハッシュ形式で取り出せるようにする（index_by）
+      @products = Product.where(id: product_ids).index_by(&:id)
+    end
+    
   end
   
   def update_quantity        
@@ -81,5 +77,4 @@ class CartsController < ApplicationController
   def cart_params
     params.permit(:product_id, :count)
   end
-  # 省略
 end

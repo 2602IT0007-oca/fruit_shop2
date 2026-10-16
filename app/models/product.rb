@@ -1,12 +1,10 @@
 class Product < ApplicationRecord
-  # バリデーション
-  validates :name, presence: true, uniqueness: true  # 商品名は必須で一意
-  validates :price, presence: true                   # 価格は必須
-
-   # Active Storage（商品画像）
-    has_one_attached :photo
-
+    has_many :orders
     has_many :cart_items
+    validates :name,presence: true, uniqueness: true
+    validates :price,presence: true
+    # Active Storage（商品画像）
+    has_one_attached :photo
 
     # 商品画像のサムネイルを生成
     def thumbnail
