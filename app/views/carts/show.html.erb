@@ -1,2 +1,7 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<p>合計金額：¥<%= @cart.total_price %></p>
+
+  <% if user_signed_in? %>
+    <%= link_to "注文に進む", new_order_path, class: "btn btn-primary" %>
+  <% else %>
+    <p><%= link_to "注文するにはログインまたは新規登録してください", new_user_session_path %></p>
+  <% end %>
