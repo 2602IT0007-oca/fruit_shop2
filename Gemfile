@@ -70,3 +70,6 @@ end
 
 # Devise
 gem "devise"
+
+# Ransack
+gem 'ransack'

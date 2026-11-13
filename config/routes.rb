@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :customers
+  resources :employees
   resources :cart_items, only: [:create, :update, :destroy]  # 追加
   resources :carts, only: [:show, :index] do
   # セッションカートに商品を追加、数量を更新、商品を削除するアクション
